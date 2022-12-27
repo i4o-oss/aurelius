@@ -2,14 +2,7 @@ import type { FC, ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import cx from 'classnames'
-import { Button } from '@common/components/buttons'
-
-export const ToastProvider = ToastPrimitive.ToastProvider
-export const ToastRoot = ToastPrimitive.Root
-export const ToastTitle = ToastPrimitive.Title
-export const ToastDescription = ToastPrimitive.Description
-export const ToastAction = ToastPrimitive.Action
-export const ToastViewport = ToastPrimitive.Viewport
+import { Button } from './buttons'
 
 type ToastProps = {
 	title?: ReactNode | string
@@ -45,7 +38,7 @@ const Toast: FC<ToastProps> = ({
 	}, [trigger, duration, isOpen])
 
 	return (
-		<ToastProvider swipeDirection='right'>
+		<ToastPrimitive.ToastProvider swipeDirection='right'>
 			{trigger && (
 				<Button
 					onClick={() => {
@@ -59,7 +52,7 @@ const Toast: FC<ToastProps> = ({
 					{trigger}
 				</Button>
 			)}
-			<ToastRoot
+			<ToastPrimitive.Root
 				className={cx(
 					'fixed inset-x-4 bottom-4 z-50 w-auto rounded-lg shadow-lg md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm',
 					'bg-white dark:bg-gray-800',
@@ -77,15 +70,15 @@ const Toast: FC<ToastProps> = ({
 				<div className='flex'>
 					<div className='flex w-0 flex-1 items-center py-4 pl-5'>
 						<div className='radix w-full'>
-							<ToastTitle className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+							<ToastPrimitive.ToastTitle className='text-sm font-medium text-gray-900 dark:text-gray-100'>
 								{title}
-							</ToastTitle>
-							<ToastDescription
+							</ToastPrimitive.ToastTitle>
+							<ToastPrimitive.ToastDescription
 								asChild
 								className='mt-1 text-sm text-gray-700 dark:text-gray-400'
 							>
 								{description}
-							</ToastDescription>
+							</ToastPrimitive.ToastDescription>
 						</div>
 					</div>
 				</div>
@@ -93,12 +86,12 @@ const Toast: FC<ToastProps> = ({
 					<div className='flex'>
 						<div className='flex flex-col space-y-1 px-3 py-2'>
 							<div className='flex h-0 flex-1'>
-								<ToastAction
+								<ToastPrimitive.ToastAction
 									asChild
 									altText={actionAltText as string}
 								>
 									{action}
-								</ToastAction>
+								</ToastPrimitive.ToastAction>
 							</div>
 							<div className='flex h-0 flex-1'>
 								<ToastPrimitive.Close className='flex w-full items-center justify-center rounded-lg border border-transparent px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:text-gray-100 dark:hover:bg-gray-900'>
@@ -108,9 +101,9 @@ const Toast: FC<ToastProps> = ({
 						</div>
 					</div>
 				)}
-			</ToastRoot>
-			<ToastViewport />
-		</ToastProvider>
+			</ToastPrimitive.Root>
+			<ToastPrimitive.Viewport />
+		</ToastPrimitive.ToastProvider>
 	)
 }
 

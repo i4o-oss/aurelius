@@ -8,7 +8,10 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
+// @ts-ignore
 import styles from '~/styles/app.css'
+// @ts-ignore
+import uiStyles from '@aurelius/ui/main.css'
 
 interface DocumentProps {
 	children: ReactNode
@@ -23,6 +26,7 @@ export const links: LinksFunction = () => {
 			href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Orbitron:wght@700&display=swap',
 		},
 		{ rel: 'stylesheet', href: styles },
+		{ rel: 'stylesheet', href: uiStyles },
 	]
 }
 

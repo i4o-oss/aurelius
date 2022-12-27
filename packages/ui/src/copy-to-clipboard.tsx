@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import copy from 'copy-to-clipboard'
 import { CopyIcon } from '@radix-ui/react-icons'
-import { Button } from '@common/components/buttons'
-import Tooltip from '@common/components/tooltip'
+import { Button } from './buttons'
+import Tooltip from './tooltip'
 
 interface Props {
 	text: string

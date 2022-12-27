@@ -3,12 +3,6 @@ import { Link } from '@remix-run/react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import cx from 'classnames'
 
-export const DropdownMenuRoot = DropdownMenuPrimitive.Root
-export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
-export const DropdownMenuContent = DropdownMenuPrimitive.Content
-export const DropdownMenuItem = DropdownMenuPrimitive.Item
-export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator
-
 interface DropdownMenuItemType {
 	icon?: ReactNode
 	label: string | ReactNode
@@ -34,9 +28,11 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 }) => {
 	return (
 		<div className='relative inline-flex text-left'>
-			<DropdownMenuRoot>
-				<DropdownMenuTrigger>{trigger}</DropdownMenuTrigger>
-				<DropdownMenuContent
+			<DropdownMenuPrimitive.Root>
+				<DropdownMenuPrimitive.Trigger>
+					{trigger}
+				</DropdownMenuPrimitive.Trigger>
+				<DropdownMenuPrimitive.Content
 					align={align}
 					className={cx(
 						' radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
@@ -49,7 +45,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 						({ label, link, icon, onSelect, shortcut }, i) => {
 							return link ? (
 								<Link key={i} to={link}>
-									<DropdownMenuItem
+									<DropdownMenuPrimitive.Item
 										key={i}
 										className={cx(
 											'flex cursor-pointer select-none items-center space-x-2 rounded-md px-2 py-2 text-sm outline-none',
@@ -68,10 +64,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 												{shortcut}
 											</div>
 										)}
-									</DropdownMenuItem>
+									</DropdownMenuPrimitive.Item>
 								</Link>
 							) : (
-								<DropdownMenuItem
+								<DropdownMenuPrimitive.Item
 									key={i}
 									className={cx(
 										'flex cursor-pointer select-none items-center space-x-2 rounded-md px-2 py-2 text-sm outline-none',
@@ -90,18 +86,18 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 											{shortcut}
 										</div>
 									)}
-								</DropdownMenuItem>
+								</DropdownMenuPrimitive.Item>
 							)
 						}
 					)}
 					{secondaryItems && (
-						<DropdownMenuSeparator className='my-1 h-px bg-gray-200 dark:bg-gray-700' />
+						<DropdownMenuPrimitive.Separator className='my-1 h-px bg-gray-200 dark:bg-gray-700' />
 					)}
 					{secondaryItems?.map(
 						({ label, link, icon, onSelect, shortcut }, i) => {
 							return link ? (
 								<Link key={i} to={link}>
-									<DropdownMenuItem
+									<DropdownMenuPrimitive.Item
 										key={i}
 										className={cx(
 											'flex cursor-pointer select-none items-center space-x-2 rounded-md px-2 py-2 text-sm outline-none',
@@ -120,10 +116,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 												{shortcut}
 											</div>
 										)}
-									</DropdownMenuItem>
+									</DropdownMenuPrimitive.Item>
 								</Link>
 							) : (
-								<DropdownMenuItem
+								<DropdownMenuPrimitive.Item
 									key={i}
 									className={cx(
 										'flex cursor-pointer select-none items-center space-x-2 rounded-md px-2 py-2 text-sm outline-none',
@@ -142,12 +138,12 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 											{shortcut}
 										</div>
 									)}
-								</DropdownMenuItem>
+								</DropdownMenuPrimitive.Item>
 							)
 						}
 					)}
-				</DropdownMenuContent>
-			</DropdownMenuRoot>
+				</DropdownMenuPrimitive.Content>
+			</DropdownMenuPrimitive.Root>
 		</div>
 	)
 }

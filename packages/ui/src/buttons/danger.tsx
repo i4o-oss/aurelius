@@ -11,8 +11,8 @@ const DangerButton: FC<DangerButtonProps> = ({
 	bg = 'bg-red-500',
 	children,
 	className,
-	isDisabled,
-	isLoading,
+	disabled,
+	loading,
 	loadingText,
 	onClick,
 	shadow = '',
@@ -23,8 +23,8 @@ const DangerButton: FC<DangerButtonProps> = ({
 		<Button
 			bg={bg}
 			className={`${className} ${shadow}`}
-			isDisabled={isDisabled}
-			isLoading={isLoading}
+			disabled={disabled}
+			loading={loading}
 			loadingText={loadingText}
 			onClick={onClick}
 			textColor={textColor}

@@ -2,11 +2,6 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import type { FC } from 'react'
 import cx from 'classnames'
 
-export const RadioGroupRoot = RadioGroupPrimitive.Root
-export const RadioGroupIndicator = RadioGroupPrimitive.Indicator
-export const RadioGroupItem = RadioGroupPrimitive.Item
-export const RadioGroupRadio = RadioGroupPrimitive.Radio
-
 type RadioOption = {
 	value: string
 	id: string
@@ -29,7 +24,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
 	onChange,
 }) => {
 	return (
-		<RadioGroupRoot
+		<RadioGroupPrimitive.Root
 			className={className}
 			defaultValue={defaultValue}
 			name={name}
@@ -37,7 +32,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
 		>
 			{options.map((option, index) => (
 				<div key={index} className='flex items-center space-x-2'>
-					<RadioGroupItem
+					<RadioGroupPrimitive.Item
 						className={cx(
 							// Setting the background in dark properly requires a workaround (see css/tailwind.css)
 							'h-4 w-4 rounded-full border border-transparent bg-gray-100 text-purple-600 dark:bg-gray-900',
@@ -48,14 +43,14 @@ const RadioGroup: FC<RadioGroupProps> = ({
 						id={option.id}
 						value={option.value}
 					>
-						<RadioGroupIndicator className='relative flex h-full w-full items-center justify-center rounded-full after:block after:h-2 after:w-2 after:rounded-full after:bg-brand-500 after:content-[""]' />
-					</RadioGroupItem>
+						<RadioGroupPrimitive.Indicator className='relative flex h-full w-full items-center justify-center rounded-full after:block after:h-2 after:w-2 after:rounded-full after:bg-brand-500 after:content-[""]' />
+					</RadioGroupPrimitive.Item>
 					<label className='text-sm' htmlFor={option.id}>
 						{option.label}
 					</label>
 				</div>
 			))}
-		</RadioGroupRoot>
+		</RadioGroupPrimitive.Root>
 	)
 }
 

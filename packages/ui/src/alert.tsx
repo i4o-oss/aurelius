@@ -4,16 +4,6 @@ import * as AlertPrimitive from '@radix-ui/react-alert-dialog'
 import { Transition } from '@headlessui/react'
 import cx from 'classnames'
 
-export const AlertRoot = AlertPrimitive.Root
-export const AlertTrigger = AlertPrimitive.Trigger
-export const AlertPortal = AlertPrimitive.Portal
-export const AlertOverlay = AlertPrimitive.Overlay
-export const AlertContent = AlertPrimitive.Content
-export const AlertTitle = AlertPrimitive.Title
-export const AlertDescription = AlertPrimitive.Description
-export const AlertCancel = AlertPrimitive.Cancel
-export const AlertAction = AlertPrimitive.Action
-
 type AlertProps = {
 	title?: ReactNode | string
 	description?: ReactNode | string
@@ -34,9 +24,13 @@ const Alert: FC<AlertProps> = ({
 	let [isAlertOpen, setIsAlertOpen] = useState(isOpen || false)
 
 	return (
-		<AlertRoot open={isAlertOpen} onOpenChange={setIsAlertOpen}>
-			{trigger && <AlertTrigger asChild>{trigger}</AlertTrigger>}
-			<AlertPortal>
+		<AlertPrimitive.Root open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+			{trigger && (
+				<AlertPrimitive.Trigger asChild>
+					{trigger}
+				</AlertPrimitive.Trigger>
+			)}
+			<AlertPrimitive.Portal>
 				<Transition.Root show={isAlertOpen}>
 					<Transition.Child
 						as={Fragment}
@@ -47,7 +41,7 @@ const Alert: FC<AlertProps> = ({
 						leaveFrom='opacity-100'
 						leaveTo='opacity-0'
 					>
-						<AlertOverlay
+						<AlertPrimitive.Overlay
 							forceMount
 							className='fixed inset-0 z-20 bg-black/50'
 						/>
@@ -61,7 +55,7 @@ const Alert: FC<AlertProps> = ({
 						leaveFrom='opacity-100 scale-100'
 						leaveTo='opacity-0 scale-95'
 					>
-						<AlertContent
+						<AlertPrimitive.Content
 							forceMount
 							className={cx(
 								'fixed z-50',
@@ -72,24 +66,28 @@ const Alert: FC<AlertProps> = ({
 							)}
 						>
 							{title && (
-								<AlertTitle className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+								<AlertPrimitive.Title className='text-sm font-medium text-gray-900 dark:text-gray-100'>
 									{title}
-								</AlertTitle>
+								</AlertPrimitive.Title>
 							)}
 							{description && (
-								<AlertDescription className='mt-2 text-sm font-normal text-gray-700 dark:text-gray-400'>
+								<AlertPrimitive.Description className='mt-2 text-sm font-normal text-gray-700 dark:text-gray-400'>
 									{description}
-								</AlertDescription>
+								</AlertPrimitive.Description>
 							)}
 							<div className='mt-4 flex justify-end space-x-2'>
-								<AlertCancel>{cancel}</AlertCancel>
-								<AlertAction>{action}</AlertAction>
+								<AlertPrimitive.Cancel>
+									{cancel}
+								</AlertPrimitive.Cancel>
+								<AlertPrimitive.Action>
+									{action}
+								</AlertPrimitive.Action>
 							</div>
-						</AlertContent>
+						</AlertPrimitive.Content>
 					</Transition.Child>
 				</Transition.Root>
-			</AlertPortal>
-		</AlertRoot>
+			</AlertPrimitive.Portal>
+		</AlertPrimitive.Root>
 	)
 }
 
