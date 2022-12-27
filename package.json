@@ -1,6 +1,6 @@
 {
 	"name": "aurelius",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"private": true,
 	"workspaces": [
 		"app",
@@ -21,7 +21,7 @@
 		]
 	},
 	"devDependencies": {
-		"eslint-config-custom": "workspace:*",
+		"@aurelius/eslint-config": "workspace:*",
 		"husky": "8.0.2",
 		"lint-staged": "13.0.3",
 		"prettier": "latest",
