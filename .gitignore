@@ -12,11 +12,20 @@ coverage
 out/
 build
 packages/ui/dist/*
+app/build/
+app/public/build
+app/app/tailwind.css
+app/api/index.js
+app/api/index.js.map
 
 # misc
 .idea
 .DS_Store
 *.pem
+.cache
+.vercel
+.output
+.eslintcache
 
 # debug
 npm-debug.log*
@@ -32,3 +41,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# prisma
+prisma/prisma

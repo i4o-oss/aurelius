@@ -1,0 +1,23 @@
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model User {
+  id             String           @id @default(cuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  name           String?
+  email          String?          @unique
+  username       String?          @unique
+  emailVerified  DateTime?        @default(now())
+  image          String?
+  role           String?          @default("user")
+  provider       String?
+}
