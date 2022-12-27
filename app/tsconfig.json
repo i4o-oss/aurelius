@@ -1,3 +1,7 @@
 {
-	"extends": "@aurelius/tsconfig/remix.json"
+	"extends": "@aurelius/tsconfig/remix.json",
+	"paths": {
+		"baseUrl": ".",
+		"~/*": ["./app/*"]
+	}
 }

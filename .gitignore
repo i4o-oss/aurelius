@@ -14,7 +14,7 @@ build
 packages/ui/dist/*
 app/build/
 app/public/build
-app/app/tailwind.css
+app/app/styles/app.css
 app/api/index.js
 app/api/index.js.map
 
