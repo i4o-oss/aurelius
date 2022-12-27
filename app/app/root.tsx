@@ -8,7 +8,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import styles from './styles/app.css'
+import styles from '~/styles/app.css'
 
 interface DocumentProps {
 	children: ReactNode

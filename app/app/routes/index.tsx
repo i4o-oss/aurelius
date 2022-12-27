@@ -1,5 +1,3 @@
-import { Link } from '@remix-run/react'
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import { ExternalLink } from 'react-feather'
 
 export default function Index() {

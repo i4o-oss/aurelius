@@ -1,3 +1,5 @@
 export default function Index() {
-	return <div>App</div>
+	return (
+		<div className='flex w-full text-white text-xl font-semibold'>App</div>
+	)
 }

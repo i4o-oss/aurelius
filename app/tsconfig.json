@@ -1,7 +1,9 @@
 {
 	"extends": "@aurelius/tsconfig/remix.json",
-	"paths": {
-		"baseUrl": ".",
-		"~/*": ["./app/*"]
-	}
+	"compilerOptions": {
+		"baseUrl": "../app",
+		"paths": {
+			"~/*": ["./app/*"]
+		}
+	},
 }
