@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
     "beforeBuildCommand": "pnpm build",
-    "beforeDevCommand": "concurrently \"pnpm dev:css\" \"remix dev\"",
+    "beforeDevCommand": "concurrently \"pnpm dev:css\" \"pnpm dev:remix\"",
     "devPath": "http://localhost:3000",
     "distDir": "../public/build"
   },
