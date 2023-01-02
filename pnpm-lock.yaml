@@ -23,6 +23,7 @@ importers:
       '@aurelius/ui': workspace:*
       '@aws-sdk/client-s3': 3.204.0
       '@aws-sdk/lib-storage': 3.204.0
+      '@radix-ui/react-icons': 1.1.1
       '@remix-run/dev': 1.7.5
       '@remix-run/node': 1.7.5
       '@remix-run/react': 1.7.5
@@ -68,6 +69,7 @@ importers:
       '@aurelius/ui': link:../packages/ui
       '@aws-sdk/client-s3': 3.204.0
       '@aws-sdk/lib-storage': 3.204.0_@aws-sdk+client-s3@3.204.0
+      '@radix-ui/react-icons': 1.1.1_react@18.2.0
       '@remix-run/node': 1.7.5_biqbaboplfbrettd7655fr4n2y
       '@remix-run/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
       '@remix-run/vercel': 1.7.5_5csgfdyx42t4eycedaksgbtf7q
