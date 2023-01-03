@@ -8,7 +8,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export default function App() {
 	return (
-		<main className='flex h-full w-full flex-col items-center justify-start'>
+		<main className='flex h-full w-full flex-col items-center justify-start p-4'>
 			<Outlet />
 		</main>
 	)

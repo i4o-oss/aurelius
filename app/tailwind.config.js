@@ -2,6 +2,7 @@ const tailwindRadix = require('tailwindcss-radix')
 
 module.exports = {
 	content: ['./app/**/*.{js,jsx,ts,tsx}'],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			colors: {

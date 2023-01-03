@@ -3,8 +3,7 @@
 	"globalDependencies": ["$NODE_ENV"],
 	"pipeline": {
 		"build": {
-			"dependsOn": ["^build"],
-			"outputs": ["dist/**"]
+			"dependsOn": ["^build"]
 		},
 		"lint": {
 			"outputs": []

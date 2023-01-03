@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node'
+import { json } from '@remix-run/node'
 import {
 	Links,
 	LiveReload,
@@ -7,7 +8,15 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useLoaderData,
 } from '@remix-run/react'
+import {
+	ThemeBody,
+	ThemeHead,
+	ThemeProvider,
+	useTheme,
+} from '~/utils/theme-provider'
+import { getThemeSession } from '~/utils/theme.server'
 // @ts-ignore
 import styles from '~/styles/app.css'
 // @ts-ignore
@@ -15,6 +24,11 @@ import uiStyles from '@aurelius/ui/main.css'
 
 interface DocumentProps {
 	children: ReactNode
+}
+
+export async function loader({ request }: LoaderArgs) {
+	const themeSession = await getThemeSession(request)
+	return json({ theme: themeSession.getTheme() })
 }
 
 export const links: LinksFunction = () => {
@@ -53,15 +67,19 @@ export const meta: MetaFunction = () => ({
 	viewport: 'width=device-width,initial-scale=1',
 })
 
-const Document = (props: DocumentProps) => {
+function Document(props: DocumentProps) {
+	const data = useLoaderData<typeof loader>()
+	const [theme] = useTheme()
+
 	return (
-		<html lang='en' className='h-full'>
+		<html lang='en' className={`w-screen h-screen ${theme ?? ''}`}>
 			<head>
 				<Meta />
 				<Links />
-				<title>Synthwave Stack</title>
+				<title>Aurelius</title>
+				<ThemeHead ssrTheme={Boolean(data.theme)} />
 			</head>
-			<body className='h-full w-full bg-brand-900 font-sans'>
+			<body className='h-full w-full bg-white dark:bg-brand-900 font-sans'>
 				{process.env.NODE_ENV === 'production' ? (
 					<>
 						{/*
@@ -78,6 +96,7 @@ const Document = (props: DocumentProps) => {
 					</>
 				) : null}
 				{props.children}
+				<ThemeBody ssrTheme={Boolean(data.theme)} />
 				<ScrollRestoration />
 				<Scripts />
 				{process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
@@ -86,10 +105,20 @@ const Document = (props: DocumentProps) => {
 	)
 }
 
-export default function App() {
+function App() {
 	return (
 		<Document>
 			<Outlet />
 		</Document>
+	)
+}
+
+export default function AppWithProviders() {
+	const data = useLoaderData<typeof loader>()
+
+	return (
+		<ThemeProvider specifiedTheme={data.theme}>
+			<App />
+		</ThemeProvider>
 	)
 }
