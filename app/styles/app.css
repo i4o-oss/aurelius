@@ -1,3 +1,124 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.editor-wrapper > div:first-child {
+	@apply max-w-3xl w-full flex items-start justify-center;
+}
+
+.ProseMirror {
+	@apply w-full max-w-3xl;
+	font-family: 'Merriweather', serif;
+	font-size: 1.3rem !important;
+	min-height: 640px !important;
+	outline: none !important;
+	border: none !important;
+	color: #ffffff !important;
+}
+
+.ProseMirror.ProseMirror-focused {
+	border: none !important;
+}
+
+.ProseMirror,
+.ProseMirror.ProseMirror-focused {
+	/*border: none transparent !important;*/
+	outline: none !important;
+	padding: 0 !important;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+	content: attr(data-placeholder);
+	float: left;
+	color: #adb5bd;
+	pointer-events: none;
+	height: 0;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+	@apply max-w-3xl;
+	padding: 0 1rem;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3 {
+	@apply max-w-3xl;
+	font-weight: bold;
+	line-height: 1.1;
+}
+
+.ProseMirror h1 {
+	@apply max-w-3xl;
+	font-size: 4em;
+	margin: 0.67em 0;
+}
+
+.ProseMirror h2 {
+	@apply max-w-3xl;
+	font-size: 2.3rem;
+	margin: 0.75em 0;
+}
+
+.ProseMirror h3 {
+	@apply max-w-3xl;
+	font-size: 2rem;
+	margin: 0.83em 0;
+}
+
+.ProseMirror pre {
+	@apply max-w-3xl;
+	background: #0d0d0d;
+	color: #fff;
+	font-family: 'JetBrainsMono', monospace;
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+}
+
+.ProseMirror pre code {
+	@apply max-w-3xl;
+	color: inherit;
+	padding: 0;
+	background: none;
+	font-size: 0.8rem;
+}
+
+.ProseMirror blockquote {
+	@apply max-w-3xl;
+	padding-left: 1rem;
+	border-left: 2px solid;
+}
+
+.ProseMirror a {
+	@apply max-w-3xl;
+	color: #68cef8;
+}
+
+.ProseMirror figure {
+	@apply max-w-3xl;
+}
+
+.ProseMirror img.ProseMirror-selectednode {
+	outline: 3px solid #68CEF8;
+}
+
+.ProseMirror img.super-image-small {
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.ProseMirror img.super-image-medium {
+	max-width: 50vw;
+	margin: auto calc(50% - 50vw);
+	transform: translateX(calc(50vw - 50%));
+}
+
+.ProseMirror img.super-image-large {
+	padding: 0 16px;
+	width: 65vw;
+	max-width: 100vw;
+	margin: auto calc(50% - 100vw);
+	transform: translateX(calc(100vw - 50%));
+}

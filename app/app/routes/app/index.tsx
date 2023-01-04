@@ -1,4 +1,5 @@
-import { Theme, useTheme } from '~/utils/theme-provider'
+import type { Dispatch, SetStateAction } from 'react'
+import { useState } from 'react'
 import { Button, Dropdown, Switch } from '@aurelius/ui'
 import {
 	FileTextIcon,
@@ -8,6 +9,9 @@ import {
 	Pencil1Icon,
 } from '@radix-ui/react-icons'
 import { Folder as FolderIcon } from 'react-feather'
+import { Theme, useTheme } from '~/utils/theme-provider'
+import TipTap from '~/components/writer/tiptap'
+import Footer from '~/components/writer/footer'
 
 function MainMenu() {
 	const [theme, setTheme] = useTheme()
@@ -90,10 +94,64 @@ function MainMenu() {
 		</div>
 	)
 }
-export default function Index() {
+
+interface EditorProps {
+	content: string
+	setContent: Dispatch<SetStateAction<string>>
+	title: string
+	setTitle: Dispatch<SetStateAction<string>>
+	setWordCount: Dispatch<SetStateAction<number>>
+}
+
+function Editor(props: EditorProps) {
+	const { content, setContent, title, setTitle, setWordCount } = props
+
 	return (
-		<div className='relative flex w-full text-white text-xl font-semibold'>
+		<section className='flex h-full w-full flex-grow flex-col items-center justify-start'>
+			<div className='flex h-full w-full flex-col items-center justify-start space-y-4 py-16'>
+				<div className='w-full max-w-3xl'>
+					<input
+						className='h-24 w-full bg-transparent text-5xl font-semibold text-white focus:outline-none'
+						onChange={(e) => setTitle(e.target.value)}
+						placeholder='Title'
+						type='text'
+						value={title}
+					/>
+				</div>
+				<TipTap
+					content={content}
+					setContent={setContent}
+					setTitle={setTitle}
+					setWordCount={setWordCount}
+				/>
+			</div>
+		</section>
+	)
+}
+
+export default function Index() {
+	const [content, setContent] = useState('')
+	const [focusMode, setFocusMode] = useState(false)
+	const [isSaving, setIsSaving] = useState(false)
+	const [postId, setPostId] = useState('')
+	const [title, setTitle] = useState('')
+	const [wordCount, setWordCount] = useState(0)
+
+	return (
+		<div className='relative flex w-full h-full flex-col items-center justify-start'>
 			<MainMenu />
+			<Editor
+				content={content}
+				setContent={setContent}
+				title={title}
+				setTitle={setTitle}
+				setWordCount={setWordCount}
+			/>
+			<Footer
+				focusMode={focusMode}
+				isSaving={isSaving}
+				wordCount={wordCount}
+			/>
 		</div>
 	)
 }
