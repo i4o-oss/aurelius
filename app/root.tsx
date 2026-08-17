@@ -50,7 +50,7 @@ const App = ({ children }: { children: ReactNode }) => {
 
 	useEffect(() => {
 		const script = document.createElement('script')
-		script.src = 'https://medama.i4o.dev/script.js'
+		script.src = 'https://x.aurelius.ink/script.js'
 		script.defer = true
 		script.setAttribute('data-hash', 'true')
 		document.head.appendChild(script)
