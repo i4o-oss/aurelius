@@ -102,13 +102,6 @@
 	"engines": {
 		"node": ">=20.0.0"
 	},
-	"devEngines": {
-		"packageManager": {
-			"name": "bun",
-			"version": "1.3.14",
-			"onFail": "download"
-		}
-	},
 	"overrides": {
 		"react": "18.3.0-canary-feed8f3f9-20240118",
 		"react-dom": "18.3.0-canary-feed8f3f9-20240118"
